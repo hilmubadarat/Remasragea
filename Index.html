@@ -1,0 +1,343 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>مسار ٦٠ يوم: من A1 إلى B2</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Readex+Pro:wght@300;400;500;600;700&family=Reem+Kufi:wght@500;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#F6F8FC; --surface:#FFFFFF; --ink:#16213D; --muted:#5B6584; --line:#DCE2EE;
+  --a1:#1F9E8C; --a2:#3D6FE0; --b1:#8A57D6; --b2:#D9951A; --done:#16213D;
+  box-sizing:border-box;
+  padding-top:env(safe-area-inset-top,0px); padding-bottom:env(safe-area-inset-bottom,0px);
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --bg:#0F1528; --surface:#18203A; --ink:#E9EDF7; --muted:#9BA5C2; --line:#2B3555;
+    --a1:#37C2AE; --a2:#6E95F5; --b1:#AE85EE; --b2:#F0B444; --done:#E9EDF7;
+  }
+}
+:root[data-theme="dark"]{
+  --bg:#0F1528; --surface:#18203A; --ink:#E9EDF7; --muted:#9BA5C2; --line:#2B3555;
+  --a1:#37C2AE; --a2:#6E95F5; --b1:#AE85EE; --b2:#F0B444; --done:#E9EDF7;
+}
+html{scroll-padding-top:env(safe-area-inset-top,0px)}
+*,*::before,*::after{box-sizing:inherit}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:"Readex Pro",Tahoma,"Segoe UI",Arial,sans-serif;font-size:16px;line-height:1.75}
+a{color:inherit}
+button{font:inherit;color:inherit;cursor:pointer}
+:focus-visible{outline:3px solid var(--a2);outline-offset:2px;border-radius:6px}
+.wrap{max-width:980px;margin:0 auto;padding:0 20px}
+.en{direction:ltr;unicode-bidi:isolate;font-family:"Readex Pro",Arial,sans-serif}
+
+header.hero{padding:44px 0 28px}
+.hero h1{font-family:"Reem Kufi","Readex Pro",sans-serif;font-weight:700;font-size:clamp(34px,7vw,60px);line-height:1.15;margin:0 0 12px;letter-spacing:-.5px}
+.hero p{margin:0;color:var(--muted);max-width:60ch;font-size:17px}
+.track{display:flex;gap:4px;margin:28px 0 10px;height:14px}
+.track span{flex:1;border-radius:7px;position:relative;overflow:hidden;background:var(--line)}
+.track span i{position:absolute;inset:0 0 0 auto;width:0;transition:width .6s ease}
+.track-labels{display:flex;gap:4px;font-size:14px;color:var(--muted)}
+.track-labels div{flex:1}
+.track-labels b{color:var(--ink);font-weight:600}
+.stats{display:flex;flex-wrap:wrap;gap:10px 22px;margin-top:18px;align-items:center}
+.stats .big{font-family:"Reem Kufi",sans-serif;font-size:28px;font-weight:700}
+.btn{border:1.5px solid var(--ink);background:var(--ink);color:var(--bg);padding:9px 18px;border-radius:999px;font-weight:600}
+.btn.ghost{background:transparent;color:var(--ink);border-color:var(--line)}
+
+nav.tabs{display:flex;gap:6px;border-bottom:1px solid var(--line);margin-bottom:24px;position:sticky;top:env(safe-area-inset-top,0px);background:var(--bg);z-index:5;padding-top:8px}
+nav.tabs button{background:none;border:0;padding:10px 14px;font-weight:500;color:var(--muted);border-bottom:3px solid transparent;margin-bottom:-1px}
+nav.tabs button[aria-selected="true"]{color:var(--ink);border-color:var(--ink)}
+
+.level{margin-bottom:34px}
+.level-head{display:flex;align-items:baseline;gap:12px;flex-wrap:wrap;margin-bottom:12px}
+.level-head h2{margin:0;font-family:"Reem Kufi",sans-serif;font-size:26px}
+.level-head .tag{font-weight:700;padding:2px 10px;border-radius:6px;color:#fff;font-size:15px}
+.level-head p{margin:0;color:var(--muted);font-size:15px;flex-basis:100%}
+.stations{display:grid;grid-template-columns:repeat(auto-fill,minmax(150px,1fr));gap:10px}
+.st{display:flex;gap:10px;align-items:flex-start;text-align:right;background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:10px 12px;min-height:76px}
+.st:hover{border-color:var(--c)}
+.st .n{flex:0 0 34px;height:34px;border-radius:50%;border:2.5px solid var(--c);display:grid;place-items:center;font-weight:700;font-size:14px;color:var(--c)}
+.st.done .n{background:var(--c);color:#fff}
+.st .t{font-size:13.5px;line-height:1.45}
+.st .t small{display:block;color:var(--muted);font-size:12px}
+.st.review{border-style:dashed}
+
+.panel{background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:20px 22px;margin-bottom:16px}
+.panel h3{margin:0 0 8px;font-size:19px}
+.panel p,.panel li{max-width:72ch}
+.res-list{display:grid;gap:10px}
+.res{display:block;text-decoration:none;background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:14px 16px}
+.res:hover{border-color:var(--ink)}
+.res b{display:block}
+.res span{color:var(--muted);font-size:14px}
+.note{border-inline-start:4px solid var(--b2);padding:12px 16px;background:var(--surface);border-radius:8px;margin-bottom:16px}
+
+/* Day sheet */
+.overlay{position:fixed;inset:0;background:rgba(10,14,30,.45);display:none;z-index:20}
+.overlay.open{display:block}
+.sheet{position:fixed;top:0;bottom:0;inset-inline-start:0;width:min(640px,100%);background:var(--bg);z-index:21;overflow-y:auto;transform:translateX(100%);transition:transform .28s ease;padding:calc(env(safe-area-inset-top,0px) + 16px) 22px calc(env(safe-area-inset-bottom,0px) + 30px)}
+.sheet.open{transform:none}
+@media (prefers-reduced-motion:reduce){.sheet,.track span i{transition:none}}
+.sheet-top{display:flex;justify-content:space-between;align-items:center;gap:8px;margin-bottom:6px}
+.sheet h2{font-family:"Reem Kufi",sans-serif;font-size:30px;line-height:1.25;margin:6px 0 4px}
+.sheet .meta{color:var(--muted);font-size:14px}
+.sec{margin-top:22px}
+.sec h3{font-size:17px;margin:0 0 8px;display:flex;align-items:center;gap:8px}
+.sec h3::before{content:"";width:10px;height:10px;border-radius:3px;background:var(--c)}
+.ex{background:var(--surface);border:1px solid var(--line);border-radius:10px;padding:10px 14px;margin:6px 0;text-align:left;font-size:15.5px}
+.chips{display:flex;flex-wrap:wrap;gap:6px}
+.chip{border:1px solid var(--line);background:var(--surface);border-radius:999px;padding:3px 12px;font-size:14.5px;text-decoration:none}
+.chip:hover{border-color:var(--c)}
+.task{display:flex;gap:10px;align-items:flex-start;padding:10px 12px;background:var(--surface);border:1px solid var(--line);border-radius:10px;margin:6px 0}
+.task input{width:20px;height:20px;margin-top:4px;accent-color:var(--c);flex:0 0 auto}
+.task.checked label{color:var(--muted);text-decoration:line-through}
+.routine{font-size:14.5px;color:var(--muted);padding-inline-start:20px;margin:0}
+.sheet-foot{display:flex;gap:8px;flex-wrap:wrap;margin-top:26px}
+.iconbtn{border:1px solid var(--line);background:var(--surface);border-radius:10px;padding:6px 12px}
+footer{color:var(--muted);font-size:13px;padding:30px 0}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header class="hero">
+    <h1>من A1 إلى B2 في ٦٠ يوماً</h1>
+    <p>خطة يومية مفصّلة: درس قواعد، مفردات، مهام عملية ومصادر مجانية لكل يوم. اضغط على أي يوم لتفتح درسه وعلّم المهام اللي خلصتها.</p>
+    <div class="track" id="track"></div>
+    <div class="track-labels">
+      <div><b>A1</b> أيام ١–١٤</div><div><b>A2</b> ١٥–٣٠</div><div><b>B1</b> ٣١–٤٥</div><div><b>B2</b> ٤٦–٦٠</div>
+    </div>
+    <div class="stats">
+      <div><span class="big" id="doneCount">٠</span> <span style="color:var(--muted)">من ٦٠ يوم مكتمل</span></div>
+      <button class="btn" id="continueBtn">ابدأ اليوم ١</button>
+    </div>
+  </header>
+
+  <nav class="tabs" role="tablist">
+    <button role="tab" aria-selected="true" data-tab="plan">الخطة</button>
+    <button role="tab" aria-selected="false" data-tab="how">طريقة الدراسة</button>
+    <button role="tab" aria-selected="false" data-tab="res">المصادر</button>
+  </nav>
+
+  <main>
+    <section id="tab-plan"></section>
+    <section id="tab-how" hidden></section>
+    <section id="tab-res" hidden></section>
+  </main>
+  <footer>التقدّم محفوظ في متصفحك على هذا الجهاز فقط.</footer>
+</div>
+
+<div class="overlay" id="overlay"></div>
+<aside class="sheet" id="sheet" role="dialog" aria-modal="true" aria-labelledby="sheetTitle"></aside>
+
+<script>
+const AR = n => String(n).replace(/\d/g,d=>"٠١٢٣٤٥٦٧٨٩"[d]);
+const LV = {
+  A1:{name:"المبتدئ",c:"var(--a1)",desc:"الأساسيات: التعريف بالنفس، فعل الكون، المضارع البسيط، الأشياء والأماكن من حولك."},
+  A2:{name:"ما فوق المبتدئ",c:"var(--a2)",desc:"الحديث عن الماضي والمستقبل، المقارنة، التسوق والسفر، وكتابة رسائل قصيرة."},
+  B1:{name:"المتوسط",c:"var(--b1)",desc:"الأزمنة التامة، الشرطيات، المبني للمجهول، السرد وكتابة فقرة مترابطة."},
+  B2:{name:"فوق المتوسط",c:"var(--b2)",desc:"أزمنة السرد، الاستنتاج، المفردات الأكاديمية، المقال، النقاش والاختبار النهائي."}
+};
+const RES = {
+  bbc:{n:"BBC Learning English",u:"https://www.bbc.co.uk/learningenglish",d:"دروس قواعد ومفردات وفيديوهات لكل المستويات"},
+  six:{n:"6 Minute English (BBC)",u:"https://www.bbc.co.uk/learningenglish/english/features/6-minute-english",d:"بودكاست ٦ دقائق مع النص، ممتاز من B1"},
+  bc:{n:"British Council – LearnEnglish",u:"https://learnenglish.britishcouncil.org/grammar",d:"شرح قواعد مع تمارين تفاعلية مصنفة حسب المستوى"},
+  peg:{n:"Perfect English Grammar",u:"https://www.perfect-english-grammar.com",d:"شرح قواعد مختصر ومئات التمارين"},
+  elllo:{n:"ELLLO",u:"https://elllo.org",d:"محادثات قصيرة حقيقية بلهجات مختلفة مع النص"},
+  voa:{n:"VOA Learning English",u:"https://learningenglish.voanews.com",d:"أخبار بإنجليزي مبسّط وبطيء"},
+  nil:{n:"News in Levels",u:"https://www.newsinlevels.com",d:"نفس الخبر بثلاث مستويات صعوبة"},
+  bne:{n:"Breaking News English",u:"https://breakingnewsenglish.com",d:"مقالات أخبار بمستويات ١–٦ مع تمارين"},
+  ted:{n:"TED-Ed",u:"https://ed.ted.com",d:"فيديوهات تعليمية قصيرة مع ترجمة إنجليزية"},
+  cam:{n:"Cambridge Dictionary",u:"https://dictionary.cambridge.org",d:"معنى الكلمة ونطقها بالبريطاني والأمريكي"},
+  ox:{n:"Oxford 3000 & 5000",u:"https://www.oxfordlearnersdictionaries.com/wordlists/oxford3000-5000",d:"أهم الكلمات مصنفة من A1 إلى C1"},
+  yg:{n:"YouGlish",u:"https://youglish.com",d:"اسمع أي كلمة من فيديوهات يوتيوب حقيقية"},
+  rachel:{n:"Rachel's English",u:"https://rachelsenglish.com",d:"دروس نطق أمريكي مفصّلة"},
+  anki:{n:"Anki",u:"https://apps.ankiweb.net",d:"بطاقات تكرار متباعد لحفظ المفردات"},
+  wi:{n:"Write & Improve (Cambridge)",u:"https://writeandimprove.com",d:"تصحيح كتابتك مجاناً مع تقدير المستوى"},
+  ce:{n:"Cambridge English – تدرّب مجاناً",u:"https://www.cambridgeenglish.org/learning-english/",d:"اختبارات وتمارين تجريبية لـ A2 Key وB1 Preliminary وB2 First"},
+  tandem:{n:"Tandem",u:"https://www.tandem.net",d:"تبادل لغوي مع ناطقين أصليين للمحادثة"},
+  efset:{n:"EF SET",u:"https://www.efset.org",d:"اختبار مستوى مجاني معتمد على CEFR"}
+};
+const REVIEW = ["مراجعة"];
+const D = [
+// ===== A1 =====
+{lv:"A1",t:"الحروف والتحيات والضمائر",g:"Alphabet & subject pronouns",x:"الضمائر الشخصية هي أساس كل جملة. I للمتكلم، you للمخاطب، he للمذكر، she للمؤنث، it لغير العاقل، we نحن، they هم.",ex:["I / you / he / she / it / we / they","Hello, I'm Rimas. Nice to meet you.","Good morning! How are you? — I'm fine, thanks."],vt:"التحيات والتعارف",w:"hello, goodbye, please, thank you, sorry, name, friend, morning, evening, nice to meet you",k:["استمع لنطق الحروف الـ٢٦ وكرّرها بصوت عالٍ (١٥ دقيقة)","احفظ الضمائر السبعة واكتب جملة لكل ضمير","سجّل صوتك وأنت تعرّف بنفسك في ٣ جمل (احتفظ بالتسجيل لليوم ٦٠)","ثبّت Anki وأنشئ مجموعة Day 1 وأضف كلمات اليوم"],r:["bbc","cam","anki"]},
+{lv:"A1",t:"فعل الكون am / is / are",g:"Verb to be (positive)",x:"I دائماً مع am، وhe/she/it مع is، وyou/we/they مع are. الاختصار: I'm, she's, they're.",ex:["I am a student.","She is from Saudi Arabia.","They are happy."],vt:"الدول والجنسيات",w:"Saudi Arabia – Saudi, Egypt – Egyptian, Japan – Japanese, Britain – British, America – American, China – Chinese, France – French, country, city, from",k:["اكتب ١٠ جمل بـ am/is/are عن أهلك وأصحابك","ادرس درس to be في British Council وحل التمارين","صف ٥ أشخاص مشهورين: He is ... He is from ...","ابحث نطق ٥ جنسيات في YouGlish وكرّرها"],r:["bc","yg","anki"]},
+{lv:"A1",t:"النفي والسؤال مع to be",g:"To be: negatives & questions",x:"النفي بإضافة not بعد الفعل. السؤال بتقديم الفعل على الفاعل، والجواب القصير يكرر الفعل.",ex:["I'm not tired.","Is he a doctor? — Yes, he is.","Are you ready? — No, I'm not."],vt:"المهن",w:"teacher, doctor, engineer, nurse, student, pilot, lawyer, chef, scientist, programmer",k:["حوّل جمل الأمس العشر إلى نفي ثم إلى سؤال","لعبة: خمّن المهنة بأسئلة Is he/she a ...?","استمع لمحادثة A1 في ELLLO واكتب ٣ معلومات فهمتها","اكتب ٥ جمل عن المهنة اللي تحلم فيها"],r:["elllo","bc","peg"]},
+{lv:"A1",t:"الأرقام والوقت والتاريخ",g:"Numbers, time & dates",x:"الأرقام العادية (one, two) للعد، والترتيبية (first, second) للتواريخ. الوقت: o'clock، half past، quarter to.",ex:["What time is it? — It's half past seven.","My birthday is on the 5th of May.","The class starts at nine o'clock."],vt:"الأيام والشهور",w:"Monday … Sunday, January … December, today, tomorrow, yesterday, o'clock, week, month, year",k:["عدّ من ١ إلى ١٠٠ بصوت عالٍ، ثم الترتيبية من 1st إلى 31st","اكتب جدول يومك بالساعات بالإنجليزي","تدرب على سؤال وجواب: When is your birthday?","اكتب تواريخ ٥ مناسبات مهمة لك بالإنجليزي"],r:["bbc","cam"]},
+{lv:"A1",t:"أدوات التعريف والجمع",g:"a / an / the + plurals",x:"a قبل الصوت الساكن وan قبل الصوت المتحرك (an hour لأن h صامتة). the لشيء معروف. الجمع غالباً بإضافة s، وفيه جموع شاذة.",ex:["a book, an apple, an hour, the sun","one box → two boxes, one city → two cities","one child → two children, one person → two people"],vt:"أشياء يومية",w:"bag, phone, pen, book, chair, table, laptop, key, bottle, window",k:["صنّف ٣٠ اسماً: a أو an","اكتب جمع ٢٠ اسماً منها الشاذة: man, woman, child, person, tooth, foot","اكتب أسماء ١٠ أشياء في غرفتك مع a/an","حل تمارين articles في Perfect English Grammar"],r:["peg","bc"]},
+{lv:"A1",t:"أسماء الإشارة والملكية",g:"this/that/these/those + my/your/his/her",x:"this وthese للقريب، that وthose للبعيد. الصفات الملكية: my, your, his, her, its, our, their.",ex:["This is my brother.","Those are her books.","Is that your car?"],vt:"العائلة",w:"mother, father, brother, sister, grandmother, grandfather, uncle, aunt, cousin, daughter",k:["ارسم شجرة عائلتك واكتب الأسماء والقرابة بالإنجليزي","اكتب ٨ جمل: This is my … / These are our …","سجّل دقيقة تعرّف فيها بعائلتك من صورة","شاهد درس مفردات العائلة في BBC Learning English"],r:["bbc","bc"]},
+{lv:"A1",rv:1,t:"مراجعة الأسبوع الأول",g:"Review: to be, articles, possessives",x:"يوم تثبيت: لا دروس جديدة. الهدف أن تستخدم كل ما تعلمته بدون ما ترجع للشرح.",ex:["My name is … I'm from … I'm a student.","This is my sister. She is a nurse.","There are … people in my family."],vt:"كل مفردات الأسبوع",w:"راجع حوالي ٦٠ كلمة",k:["راجع كل بطاقات Anki للأسبوع","اكتب نصاً من ١٠٠ كلمة: About me","حل تمارين A1 في British Council كاختبار ذاتي","صحّح نصك في Write & Improve"],r:["bc","anki","wi"]},
+{lv:"A1",t:"المضارع البسيط (I/you/we/they)",g:"Present simple",x:"للعادات والحقائق والروتين. الفعل يبقى بصيغته الأصلية مع I/you/we/they.",ex:["I wake up at six.","We study English every day.","They live in Dammam."],vt:"الروتين اليومي",w:"wake up, get up, have breakfast, go to school, study, work, come back, have dinner, go to bed, brush my teeth",k:["اكتب روتينك اليومي في ١٠ جمل","استمع لمحادثة Daily routine في ELLLO","Shadowing: كرّر بعد المتحدث ٥ دقائق بنفس السرعة","اكتب روتين يوم الجمعة وقارنه بيوم دراسي"],r:["elllo","bc"]},
+{lv:"A1",t:"المضارع البسيط مع he/she/it",g:"Present simple: third person -s",x:"نضيف s للفعل مع he/she/it. ‎-es بعد ch, sh, s, x, o. وy بعد حرف ساكن تصير ies. وhave تصير has.",ex:["She works in a hospital.","He watches TV after dinner.","My brother studies at night."],vt:"أفعال شائعة",w:"watch, go, do, have, play, read, write, drink, eat, listen",k:["حوّل روتينك أمس إلى روتين أخوك أو أختك","تمرين إملاء: goes, watches, studies, has, fixes","اكتب ٨ جمل عن يوم في حياة عالِم تحبه","حل تمارين present simple في British Council"],r:["bc","peg"]},
+{lv:"A1",t:"النفي والسؤال: do / does",g:"Present simple: negatives & questions",x:"don't مع I/you/we/they وdoesn't مع he/she/it، والفعل بعدها بدون s.",ex:["I don't like coffee.","Does she speak French? — No, she doesn't.","What do you do in your free time?"],vt:"الهوايات",w:"reading, drawing, swimming, cooking, gaming, hiking, photography, coding, football, music",k:["اكتب ١٠ أسئلة بـ Do you …? وجاوب عليها","اكتب ٥ أسئلة بـ Does he/she …? عن شخص تعرفه","اكتب فقرة: My hobbies","استمع لحلقة من VOA Learning English (مستوى Beginning)"],r:["voa","bc"]},
+{lv:"A1",t:"ظروف التكرار",g:"Adverbs of frequency",x:"always ‎١٠٠٪، usually، often، sometimes، rarely، never ‎٠٪. تجي قبل الفعل الأساسي وبعد to be.",ex:["I always drink water in the morning.","She is never late.","How often do you exercise?"],vt:"الأكل والشرب",w:"rice, chicken, bread, eggs, vegetables, fruit, juice, water, dates, coffee",k:["رتّب الظروف الستة حسب النسبة واحفظها","اكتب ١٠ جمل عن عاداتك الغذائية","اكتب قائمة أكل أسبوعك بالإنجليزي","شاهد درس Food vocabulary في BBC"],r:["bbc","peg"]},
+{lv:"A1",t:"there is / are وحروف الجر للمكان",g:"There is / there are + prepositions",x:"there is للمفرد وthere are للجمع. حروف المكان: in, on, under, next to, between, behind, in front of.",ex:["There is a sofa in the living room.","There are two windows in my room.","The keys are on the table, next to the lamp."],vt:"البيت",w:"kitchen, bedroom, bathroom, living room, sofa, bed, fridge, door, stairs, garden",k:["صف غرفتك في ٨ جمل","ارسم مخطط بيتك واكتب وصفه","خبّي شيء في البيت واكتب مكانه بدقة لشخص يدوره","حل تمارين prepositions of place"],r:["bc","cam"]},
+{lv:"A1",t:"can / can't للقدرة",g:"Can for ability",x:"can + الفعل الأصلي بدون to. انتبه للنطق: can مخففة /kən/ وcan't واضحة.",ex:["I can swim.","She can't drive.","Can you speak English? — Yes, I can."],vt:"الرياضة والمهارات",w:"run, swim, ride a bike, play tennis, climb, jump, dance, cook, draw, type",k:["اكتب ١٠ أشياء تقدر تسويها و٥ ما تقدر","سجّل نفسك تنطق جمل فيها can وcan't وقارن مع YouGlish","اسأل ٣ أشخاص بـ Can you …? واكتب أجوبتهم","شاهد درس نطق can/can't"],r:["rachel","yg"]},
+{lv:"A1",rv:1,t:"مراجعة واختبار نهاية A1",g:"A1 checkpoint",x:"قيّم نفسك: هل تقدر تعرّف بنفسك، تحكي روتينك، تصف بيتك، وتسأل أسئلة بسيطة؟",ex:["I usually wake up at 6. I go to school by car.","There is a big garden in my house.","I can't swim, but I can ride a bike."],vt:"كل مفردات A1",w:"راجع حوالي ١٣٠ كلمة",k:["راجع كل بطاقات Anki","اكتب ١٥٠ كلمة: My week وصحّحها في Write & Improve","حل تمارين A1 كاملة في British Council وسجّل نتيجتك","سجّل ٣ دقائق عن نفسك وروتينك وهواياتك بدون ورقة"],r:["wi","bc","anki"]},
+// ===== A2 =====
+{lv:"A2",t:"المضارع المستمر",g:"Present continuous",x:"am/is/are + فعل ing للي يصير الحين أو هالفترة. الإملاء: make → making، run → running.",ex:["I'm studying now.","She is wearing a black abaya.","What are you doing?"],vt:"الملابس",w:"shirt, dress, jacket, shoes, trousers, scarf, hat, wear, put on, take off",k:["صف ٥ صور: ماذا يفعل الناس الآن؟","اكتب ماذا تفعل عائلتك الآن","تمرين إملاء ing على ٢٠ فعل","استمع لمحادثة A2 في ELLLO"],r:["elllo","bc"]},
+{lv:"A2",t:"البسيط مقابل المستمر",g:"Present simple vs continuous",x:"البسيط للعادة والمستمر للحظة الحالية. أفعال الحالة مثل like, know, want, need لا تأتي غالباً بالمستمر.",ex:["I usually walk, but today I'm taking a taxi.","It rains a lot in winter. It's raining now.","I know the answer. (not: I'm knowing)"],vt:"الطقس",w:"sunny, rainy, cloudy, windy, hot, cold, humid, storm, temperature, degree",k:["١٥ جملة اختيار بين الزمنين","اكتب نشرة طقس للدمام اليوم","احفظ ١٠ أفعال حالة","اقرأ خبر طقس في News in Levels"],r:["nil","bc"]},
+{lv:"A2",t:"المعدود وغير المعدود",g:"some / any / much / many",x:"many مع المعدود وmuch مع غير المعدود. some في الإثبات وany في النفي والسؤال غالباً.",ex:["How much sugar do you need?","How many apples are there?","Is there any milk? — There's some in the fridge."],vt:"التسوق",w:"price, cheap, expensive, cash, card, receipt, discount, size, buy, pay",k:["صنّف ٣٠ اسماً: معدود أو غير معدود","اكتب حوار في سوبرماركت","اكتب قائمة مشتريات بالكميات: a bottle of, a kilo of, a loaf of","حل تمارين countable/uncountable"],r:["bc","peg"]},
+{lv:"A2",t:"الماضي من to be",g:"was / were",x:"was مع I/he/she/it، وwere مع you/we/they.",ex:["I was at home yesterday.","Were you tired after school?","The weather wasn't good last week."],vt:"أماكن المدينة",w:"hospital, mall, mosque, park, bank, library, museum, airport, beach, station",k:["اكتب وين كنت كل يوم الأسبوع الماضي","صف مكان زرته وأنت صغير","اكتب حوار: Where were you …?","شاهد درس was/were في BBC"],r:["bbc","bc"]},
+{lv:"A2",t:"الماضي البسيط للأفعال المنتظمة",g:"Past simple: regular verbs & -ed",x:"نضيف ed. النطق ثلاثة: /t/ بعد الأصوات المهموسة (watched)، /d/ بعد المجهورة (played)، /ɪd/ بعد t وd (wanted).",ex:["I watched a film last night.","She studied for two hours.","We visited our grandparents."],vt:"أفعال منتظمة",w:"visit, start, finish, call, ask, answer, help, clean, arrive, decide",k:["صنّف ٢٠ فعلاً حسب نطق ed","اكتب يومياتك لأمس في ٨ جمل","ابحث watched, wanted, played في YouGlish","Shadowing ٥ دقائق على نص بالماضي"],r:["yg","peg"]},
+{lv:"A2",t:"أهم ٥٠ فعل شاذ",g:"Past simple: irregular verbs",x:"ما لها قاعدة، تنحفظ. ابدأ بالأكثر استخداماً واحفظها كجمل مو كقائمة.",ex:["go → went, see → saw, eat → ate","buy → bought, think → thought","I took the bus and came home late."],vt:"أفعال شاذة",w:"go, see, eat, drink, buy, take, make, get, give, come (+ ٤٠ في قائمتك)",k:["احفظ ٢٥ فعلاً اليوم في Anki (الباقي بكرة ضمن المراجعة)","اكتب قصة ١٠ جمل فيها ١٥ فعل شاذ","اختبر نفسك كتابةً من الذاكرة","اقرأ خبر مستوى ١ في Breaking News English"],r:["peg","bne","anki"]},
+{lv:"A2",rv:1,t:"مراجعة الأسبوع الثالث",g:"Review: present & past",x:"ثبّت الأفعال الشاذة الخمسين والفرق بين البسيط والمستمر.",ex:["Last summer I went to Abha. It was cool and green.","Right now I'm writing; I usually write at night."],vt:"مراجعة",w:"راجع ٥٠ فعل شاذ + مفردات الأسبوع",k:["أكمل حفظ الـ٥٠ فعل الشاذ","اكتب ١٥٠ كلمة: My last holiday وصحّحها في Write & Improve","استمع لحلقة 6 Minute English مع النص","محادثة ١٠ دقائق مع شريك في Tandem أو سجّل نفسك"],r:["six","wi","tandem"]},
+{lv:"A2",t:"السؤال والنفي في الماضي",g:"Past simple: did / didn't",x:"did وdidn't والفعل بعدها يرجع لأصله: Did you go? (not: went).",ex:["Did you travel last summer?","I didn't go out yesterday.","Where did you go? What did you see?"],vt:"السفر",w:"ticket, passport, flight, hotel, luggage, trip, abroad, book, check in, souvenir",k:["اكتب ١٥ سؤال بـ did عن إجازة","اكتب مقابلة تخيلية مع مسافر","اكتب ١٢٠ كلمة عن رحلة حقيقية أو خيالية","اقرأ قصة سفر في VOA"],r:["voa","bc"]},
+{lv:"A2",t:"المقارنة",g:"Comparatives",x:"الصفات القصيرة: er + than. الطويلة: more + الصفة + than. الشاذة: good → better، bad → worse، far → farther.",ex:["Riyadh is bigger than Dammam.","This book is more interesting than that one.","My English is better now."],vt:"الوصف",w:"tall, short, young, old, friendly, quiet, crowded, modern, beautiful, dangerous",k:["قارن بين مدينتين في ١٠ جمل","قارن بين شخصين من عائلتك","اكتب جدول الصفات الشاذة واحفظه","حل تمارين comparatives"],r:["bc","peg"]},
+{lv:"A2",t:"التفضيل",g:"Superlatives",x:"the + est للقصيرة، the most للطويلة. good → the best، bad → the worst.",ex:["The Rub' al Khali is one of the largest sand deserts in the world.","It's the most beautiful place I've seen.","She is the best student in class."],vt:"الجغرافيا",w:"mountain, desert, river, sea, island, coast, valley, lake, population, capital",k:["اكتب ١٠ حقائق عن السعودية بالتفضيل (ابحث وتأكد)","سوّ كويز من ٥ أسئلة: What is the … ?","شاهد فيديو جغرافيا في TED-Ed بترجمة إنجليزية","حل تمارين superlatives"],r:["ted","bc"]},
+{lv:"A2",t:"going to للخطط",g:"Be going to",x:"للخطط المقررة وللتوقع المبني على دليل واضح.",ex:["I'm going to study engineering.","Look at the clouds. It's going to rain.","What are you going to do this weekend?"],vt:"الخطط والمستقبل",w:"next week, tonight, plan, goal, future, university, apply, graduate, career, dream",k:["اكتب خطتك للأسبوع القادم في ١٠ جمل","اكتب ١٠٠ كلمة عن خططك للجامعة","سجّل دقيقتين: My plans","استمع لمحادثة عن الخطط في ELLLO"],r:["elllo","bc"]},
+{lv:"A2",t:"will وhave to وmust",g:"Will + obligation",x:"will للتنبؤ والقرار اللحظي والعرض. must وhave to للإلزام. انتبه: mustn't = ممنوع، don't have to = مو لازم.",ex:["I think AI will change medicine.","I'll help you with that.","You mustn't use your phone in the exam. You don't have to come early."],vt:"القوانين والدراسة",w:"rule, allowed, forbidden, uniform, exam, homework, grade, deadline, attend, late",k:["اكتب ١٠ تنبؤات عن عام ٢٠٤٠ بـ will","اكتب قوانين بيتك أو مدرستك بـ must / have to","اكتب ٥ أزواج جمل تبيّن فرق mustn't وdon't have to","حل تمارين will و must"],r:["bc","peg"]},
+{lv:"A2",t:"ضمائر المفعول والطلب المهذب",g:"Object pronouns + would like",x:"me, you, him, her, it, us, them بعد الفعل أو حرف الجر. would like أكثر أدباً من want.",ex:["Can you help me?","I'd like a cappuccino, please.","Could I have the bill, please?"],vt:"المطعم",w:"menu, order, waiter, bill, starter, main course, dessert, spicy, delicious, reservation",k:["اكتب حوار طلب في مطعم بعبارات مهذبة","مثّل الحوار وسجّله","اكتب تقييم مطعم في ٨٠ كلمة","ابحث نطق menu, dessert, reservation في Cambridge Dictionary"],r:["cam","bbc"]},
+{lv:"A2",rv:1,t:"مراجعة واختبار نهاية A2",g:"A2 checkpoint",x:"قيّم نفسك: هل تحكي عن الماضي والمستقبل، تقارن، وتكتب رسالة قصيرة؟",ex:["Last year I visited …, and next year I'm going to …","It was the best trip of my life."],vt:"كل مفردات A2",w:"راجع حوالي ٣٠٠ كلمة",k:["راجع كل Anki","حل اختبار A2 Key تجريبي من Cambridge (Reading + Listening)","اكتب إيميل ١٠٠ كلمة لصديق عن خطط الإجازة","محادثة ١٥ دقيقة عن الماضي والمستقبل"],r:["ce","wi","anki"]},
+{lv:"A2",t:"المضارع التام: ever / never",g:"Present perfect: experiences",x:"have/has + التصريف الثالث (V3) للتجارب في الحياة بدون تحديد وقت.",ex:["Have you ever been to London?","I've never eaten sushi.","She has visited five countries."],vt:"التجارب",w:"experience, try, visit, meet, win, lose, break, forget, ever, never",k:["اكتب ١٠ أسئلة Have you ever …? وجاوب بصدق","اكتب ١٠ أشياء ما سويتها أبداً","احفظ التصريف الثالث لأهم ٥٠ فعل","حل تمارين present perfect في British Council"],r:["bc","anki"]},
+{lv:"A2",t:"التام مقابل الماضي + كتابة إيميل",g:"Present perfect vs past simple",x:"لو ذكرت وقت محدد (yesterday, in 2024) استخدم الماضي البسيط. بدون وقت أو له أثر الآن: المضارع التام.",ex:["I've been to Jeddah. I went there in 2024.","I've lost my keys. (I can't find them now)"],vt:"الإيميل",w:"Dear, regards, attached, reply, subject, request, inform, thanks for, looking forward to, sincerely",k:["١٥ جملة اختيار بين الزمنين","اكتب إيميل رسمي قصير تطلب فيه معلومات عن دورة","صحّحه في Write & Improve","اقرأ ٣ أخبار مستوى ٢ في News in Levels"],r:["wi","nil"]},
+// ===== B1 =====
+{lv:"B1",t:"التام: for / since / just / yet",g:"Present perfect: duration & recent actions",x:"for مع مدة (ten years)، since مع نقطة بداية (2016). just = توه، already = بالفعل، yet في النفي والسؤال.",ex:["I've lived here for ten years / since 2016.","I've just finished my homework.","Have you done it yet? — Not yet."],vt:"المشاريع",w:"project, progress, deadline, task, achieve, complete, improve, team, result, research",k:["اكتب ٨ جمل بـ for/since عن أشياء تسويها من زمان","اكتب تحديث عن مشروع تشتغل عليه: ما الذي أنجزته وما لم تنجزه بعد","حل تمارين for/since","استمع لحلقة 6 Minute English"],r:["six","bc"]},
+{lv:"B1",t:"الماضي المستمر",g:"Past continuous + when / while",x:"لحدث كان مستمراً وقطعه حدث آخر، أو حدثين بنفس الوقت.",ex:["I was reading when the power went off.","While she was cooking, he was studying."],vt:"السرد",w:"suddenly, then, after that, finally, notice, realise, happen, accident, strange, scream",k:["اكتب قصة ١٥٠ كلمة تبدأ بـ It was raining …","احكِ قصة حقيقية مسجّلة دقيقتين","اقرأ قصة B1 في British Council","حل تمارين past continuous"],r:["bc","peg"]},
+{lv:"B1",t:"used to",g:"Used to for past habits",x:"لعادات وحالات كانت في الماضي وانتهت. السؤال: Did you use to …? (بدون d).",ex:["I used to live in Abha.","Did you use to play outside?","There didn't use to be so many cars."],vt:"الطفولة",w:"childhood, toy, neighbour, primary school, scared, naughty, grow up, remember, miss, nostalgic",k:["اكتب ١٠ جمل عن طفولتك","قارن حياة جدّك أو جدّتك قديماً بالحين","سجّل دقيقتين عن طفولتك","اقرأ مقال مستوى ٣ في Breaking News English"],r:["bne","bc"]},
+{lv:"B1",t:"الشرط الأول",g:"First conditional",x:"If + مضارع بسيط، will + فعل. لاحتمال حقيقي في المستقبل. unless = if not.",ex:["If we recycle, we will reduce waste.","Unless you study, you won't pass."],vt:"البيئة",w:"pollution, recycle, waste, climate change, renewable, emissions, protect, plastic, solar, ocean",k:["اكتب ١٠ جمل شرطية عن البيئة","اقرأ مقال بيئة في VOA واستخرج ١٠ كلمات جديدة","اكتب فقرة: How can we protect our seas?","Shadowing ٥ دقائق"],r:["voa","bc"]},
+{lv:"B1",rv:1,t:"مراجعة الأسبوع الخامس",g:"Review: perfect tenses & narrative",x:"اختبر قدرتك على السرد بأزمنة مختلفة.",ex:["I've been interested in science since I was ten. I used to …"],vt:"مراجعة",w:"راجع مفردات الأسبوع",k:["راجع Anki","اكتب ٢٠٠ كلمة عن تجربة غيّرتك وصحّحها","استمع لحلقتين 6 Minute English: الأولى بدون نص ثم مع النص","محادثة ٢٠ دقيقة مع شريك لغة"],r:["six","wi","tandem"]},
+{lv:"B1",t:"الشرط الثاني",g:"Second conditional",x:"If + ماضي بسيط، would + فعل. لموقف تخيلي أو غير مرجح. مع I تُستخدم were غالباً.",ex:["If I had a million riyals, I would build a lab.","If I were you, I'd apply."],vt:"الأحلام والتخيّل",w:"imagine, invent, wealthy, famous, superpower, choose, afford, prefer, opportunity, ambition",k:["جاوب ١٠ أسئلة What would you do if …?","اكتب ١٠ جمل تبيّن الفرق بين الشرط الأول والثاني","اكتب ١٢٠ كلمة: If I could change one thing …","شاهد فيديو TED-Ed واكتب ملخص ٥ جمل"],r:["ted","bc"]},
+{lv:"B1",t:"أفعال النصيحة والإلزام",g:"should / ought to / must / have to",x:"should وought to للنصيحة. must إلزام من المتكلم، have to إلزام من الخارج. don't have to = مو ضروري.",ex:["You should sleep more.","You don't have to come.","You ought to see a doctor."],vt:"الصحة",w:"headache, fever, medicine, pharmacy, exercise, diet, healthy, injury, appointment, symptoms",k:["اكتب نصائح لصديق متوتر قبل الاختبار","اكتب حوار عند الطبيب","اكتب جدول الـmodals وفروقها","شاهد درس modals في BBC"],r:["bbc","bc"]},
+{lv:"B1",t:"المبني للمجهول",g:"Passive voice (present & past)",x:"be + التصريف الثالث. نستخدمه لما يكون الفاعل غير مهم أو غير معروف.",ex:["Paper was invented in China.","Millions of phones are sold every year.","The bridge was built in 1990."],vt:"التقنية",w:"invent, discover, develop, device, software, data, network, robot, battery, design",k:["اكتب ١٠ حقائق عن اختراعات بالمجهول","حوّل ١٠ جمل من المعلوم إلى المجهول","اقرأ مقال تقني في VOA","اكتب كيف يُصنع شيء تحبه خطوة بخطوة بالمجهول"],r:["voa","peg"]},
+{lv:"B1",t:"جمل الصلة",g:"Relative clauses",x:"who للعاقل، which لغير العاقل، that للاثنين، where للمكان، whose للملكية. الجملة غير المحددة بين فواصل ولا تستخدم that.",ex:["A doctor is someone who treats patients.","This is the lab where I work.","My sister, who lives in Riyadh, is a pharmacist."],vt:"التعريفات",w:"define, refer to, a kind of, someone, something, somewhere, describe, feature, purpose, tool",k:["عرّف ١٥ كلمة بجمل صلة (لعبة Taboo)","ادمج ١٠ أزواج جمل بجمل صلة","اكتب ٥ جمل غير محددة بالفواصل","حل تمارين relative clauses"],r:["bc","peg"]},
+{lv:"B1",t:"المصدر وصيغة ing",g:"Gerunds & infinitives",x:"بعض الأفعال يجي بعدها ing (enjoy, avoid, finish) وبعضها to (decide, hope, plan). بعضها يتغير معناها: stop to do ≠ stop doing.",ex:["I enjoy reading.","I decided to apply.","I stopped to talk. / I stopped talking."],vt:"أفعال + ing / to",w:"enjoy, avoid, finish, mind, decide, plan, hope, agree, refuse, manage",k:["احفظ القائمتين (+ing و +to) في Anki","اكتب ١٥ جملة عنك","اكتب ١٠٠ كلمة عن أشياء تستمتع فيها وتتجنبها","حل تمارين Perfect English Grammar"],r:["peg","anki"]},
+{lv:"B1",t:"الأفعال المركبة",g:"Phrasal verbs (most common)",x:"فعل + حرف يعطي معنى جديد. تعلمها في جمل كاملة مو كقائمة.",ex:["Turn off the lights.","I gave up sugar.","Look it up in the dictionary."],vt:"Phrasal verbs",w:"get up, look for, find out, give up, turn on/off, look after, put off, run out of, set up, come across",k:["أضف ٢٠ phrasal verb إلى Anki مع جملة لكل واحد","اكتب قصة فيها ١٠ منها","اسمع كل واحد ٣ مرات في YouGlish","شاهد درس phrasal verbs في BBC"],r:["yg","bbc","anki"]},
+{lv:"B1",rv:1,t:"مراجعة واختبار نهاية B1",g:"B1 checkpoint",x:"المعيار: تفهم ٧٠٪ تقريباً من 6 Minute English بدون نص، وتكتب فقرة رأي مترابطة.",ex:["In my opinion, … because … For example, …"],vt:"كل مفردات B1",w:"راجع كل البطاقات",k:["حل اختبار B1 Preliminary تجريبي (Reading + Listening)","اكتب مقال رأي ٢٠٠ كلمة","تكلم ٣ دقائق عن موضوع عشوائي بدون تحضير وسجّل","قيّم فهمك لحلقة 6 Minute English بدون نص"],r:["ce","six","wi"]},
+{lv:"B1",t:"الكلام المنقول",g:"Reported speech: statements",x:"نرجع الزمن خطوة للوراء ونغيّر الضمائر والظروف: tomorrow → the next day، here → there. tell يحتاج مفعول: told me.",ex:["'I'm tired.' → She said (that) she was tired.","'I'll call you.' → He told me he would call."],vt:"أفعال القول",w:"say, tell, explain, mention, claim, reply, announce, promise, warn, admit",k:["انقل ١٥ جملة من محادثة أو مسلسل","اكتب جدول تحولات الأزمنة والظروف","اكتب ملخص محادثة مع صديق بالكلام المنقول","اقرأ خبر مستوى ٤ في Breaking News English"],r:["bne","bc"]},
+{lv:"B1",t:"أدوات الربط وكتابة الفقرة",g:"Linkers & paragraph writing",x:"الفقرة الجيدة: جملة رئيسية، دعم وأمثلة، ثم خاتمة. أدوات الربط تخلي كتابتك مترابطة.",ex:["Although it was late, we continued.","Social media connects people. However, it can be addictive.","Therefore, …  /  As a result, …"],vt:"أدوات الربط",w:"although, however, therefore, moreover, despite, whereas, in addition, as a result, on the other hand, in conclusion",k:["اكتب فقرة ١٥٠ كلمة: Pros and cons of social media","استخدم ٨ أدوات ربط على الأقل","صحّح في Write & Improve","اقرأ مقال رأي واستخرج أدوات الربط فيه"],r:["wi","bc"]},
+{lv:"B1",t:"المضارع التام المستمر",g:"Present perfect continuous",x:"have/has been + ing لنشاط بدأ في الماضي ومستمر أو انتهى توه، مع التركيز على المدة.",ex:["I've been studying English for 45 days.","She's been working all morning.","Why are you tired? — I've been running."],vt:"الدراسة والعمل",w:"internship, volunteer, skill, qualification, focus, effort, schedule, workload, colleague, motivated",k:["اكتب ١٠ جمل عن رحلتك مع الإنجليزي حتى الآن","اكتب ٥ أزواج تبيّن الفرق مع present perfect","سجّل دقيقتين: What have you been doing lately?","استمع لحلقة 6 Minute English"],r:["six","bc"]},
+// ===== B2 =====
+{lv:"B2",t:"الماضي التام وأزمنة السرد",g:"Past perfect & narrative tenses",x:"had + V3 لحدث سبق حدثاً آخر في الماضي. القصة الجيدة تمزج: البسيط، المستمر، التام، التام المستمر.",ex:["When I arrived, the class had already started.","She had been waiting for an hour before the bus came."],vt:"السرد المتقدم",w:"realise, discover, by the time, eventually, meanwhile, unexpected, turn out, previously, at last, it turned out that",k:["اكتب قصة ٢٠٠ كلمة بأزمنة السرد الأربعة","رتّب أحداث خط زمني واكتبها بالماضي التام","حل تمارين past perfect","شاهد قصة في TED-Ed ولخصها"],r:["ted","bc"]},
+{lv:"B2",t:"الشرط الثالث والمختلط",g:"Third & mixed conditionals",x:"الثالث: If + had V3، would have V3 للماضي غير الحقيقي. المختلط يربط ماضي بحاضر.",ex:["If I had studied, I would have passed.","If I had slept earlier, I wouldn't be tired now."],vt:"القرارات والندم",w:"regret, mistake, consequence, chance, decision, outcome, luckily, unfortunately, otherwise, turning point",k:["اكتب ١٠ جمل What if … عن أحداث تاريخية","اكتب ٥ جمل عن قرارات في حياتك","اكتب ٥ جمل شرط مختلط","حل تمارين B2 conditionals في British Council"],r:["bc","peg"]},
+{lv:"B2",t:"أفعال الاستنتاج",g:"Modals of deduction",x:"must = متأكد إنه صح، can't = متأكد إنه غلط، might/may/could = محتمل. للماضي: + have V3.",ex:["She must be at home — her car is outside.","He can't have seen it.","They might have missed the bus."],vt:"الاستنتاج",w:"evidence, clue, probably, obviously, certain, suspect, likely, assume, conclude, mystery",k:["حل ٥ ألغاز واكتب استنتاجاتك","صف ٥ صور غامضة بجمل استنتاج","استمع لحلقة وحاول تستنتج النهاية قبل ما تخلص","حل تمارين modals of deduction"],r:["six","peg"]},
+{lv:"B2",rv:1,t:"مراجعة الأسبوع السابع",g:"Review: B2 grammar so far",x:"ركّز على الدقة: اكتب ثم راجع أخطاءك بنفسك قبل التصحيح الآلي.",ex:["If I hadn't joined that programme, I would never have discovered …"],vt:"مراجعة",w:"راجع مفردات الأسبوع",k:["راجع Anki","اكتب مقال ٢٥٠ كلمة وصحّحه","استمع لحلقة 6 Minute English بدون نص ولخصها صوتياً في دقيقة","محادثة ٢٠ دقيقة مع شريك لغة"],r:["six","wi","tandem"]},
+{lv:"B2",t:"مجهول متقدم وhave something done",g:"Advanced passive",x:"المجهول مع الـmodals والمستقبل، وتراكيب It is said that …، وhave/get something done لما أحد يسوي لك شيء.",ex:["The results will be announced tomorrow.","It is believed that the site is 2,000 years old.","I had my phone repaired."],vt:"البحث العلمي",w:"hypothesis, experiment, sample, measure, analyse, findings, publish, significant, method, variable",k:["اكتب قسم Methods لتجربة علمية بسيطة بالمجهول","اكتب ١٠ جمل have/get something done","اكتب ٥ جمل It is said/believed that …","اقرأ مقال علمي مبسط في VOA Science"],r:["voa","bc"]},
+{lv:"B2",t:"الأسئلة المنقولة وأفعال النقل",g:"Reported questions & reporting verbs",x:"في السؤال المنقول يرجع ترتيب الجملة عادي بدون do. وأفعال النقل لها تراكيب: suggest + ing، deny + ing، offer + to.",ex:["She asked me where I lived.","He suggested going early.","She denied taking the money."],vt:"أفعال النقل",w:"suggest, recommend, deny, admit, insist, refuse, offer, apologise, accuse, remind",k:["انقل مقابلة صحفية قصيرة","اكتب ١٠ جمل بأفعال النقل مع تراكيبها","انقل تصريحات من خبر حديث","حل تمارين reported questions"],r:["bne","peg"]},
+{lv:"B2",t:"wish / if only / would rather",g:"Wishes & preferences",x:"wish + ماضي = أمنية عن الحاضر. wish + had V3 = ندم على الماضي. would rather + فعل للتفضيل.",ex:["I wish I spoke French.","If only I had known!","I'd rather stay home tonight."],vt:"المشاعر",w:"frustrated, relieved, disappointed, grateful, anxious, confident, overwhelmed, satisfied, curious, proud",k:["اكتب ١٠ أمنيات (٥ حاضر و٥ ماضي)","اكتب حوار تفضيلات بـ would rather","اكتب يوميات ١٥٠ كلمة بمفردات المشاعر","اسمع ٥ كلمات من المشاعر في YouGlish"],r:["yg","bc"]},
+{lv:"B2",t:"المستقبل المستمر والتام",g:"Future continuous & future perfect",x:"will be + ing لشيء بيكون مستمر في وقت معين بالمستقبل. will have + V3 لشيء بيكون انتهى قبل وقت معين.",ex:["This time next year, I'll be studying at university.","By 2030, I will have graduated."],vt:"الطموح",w:"by then, milestone, accomplish, pursue, long-term, short-term, launch, career path, expand, vision",k:["اكتب خطة ٥ سنوات بالزمنين","اكتب ١٠ جمل: By the end of this course I will have …","سجّل عرض دقيقتين عن مستقبلك","حل تمارين future perfect"],r:["bc","peg"]},
+{lv:"B2",t:"المتلازمات والمفردات الأكاديمية",g:"Collocations & academic vocabulary",x:"الكلمات تجي في أزواج ثابتة: make a decision وليس do a decision. المفردات الأكاديمية ترفع مستوى كتابتك بسرعة.",ex:["make a decision, do research, take a risk","pay attention, reach a conclusion, raise awareness"],vt:"مفردات أكاديمية",w:"analyse, approach, concept, data, evidence, factor, impact, process, significant, sustainable",k:["أضف ٣٠ collocation إلى Anki","اقرأ مقال علمي واستخرج ١٥ مفردة أكاديمية","اكتب فقرة ١٥٠ كلمة عن موضوع علمي تحبه","راجع كلمات B2 في قائمة Oxford 5000"],r:["ox","voa","anki"]},
+{lv:"B2",t:"كتابة مقال الرأي",g:"Opinion essay",x:"مقدمة تعرض الموضوع ورأيك، فقرتين أو ثلاث بحجج وأمثلة، رأي مخالف مع رد عليه، ثم خاتمة.",ex:["It is often argued that …","In my view, … because …","To sum up, …"],vt:"لغة المقال",w:"argue, claim, perspective, drawback, benefit, crucial, controversial, evidence suggests, convincing, overall",k:["خطّط ١٠ دقائق قبل الكتابة","اكتب مقال ٢٥٠ كلمة: Should students use AI for homework?","صحّح في Write & Improve ثم أعد الكتابة","اقرأ نموذج مقال B2 في British Council"],r:["wi","bc"]},
+{lv:"B2",rv:1,t:"مراجعة الأسبوع الثامن",g:"Review: writing & vocabulary",x:"قارن مقالك الحالي بأول نص كتبته في اليوم ٧ — هذا مقياس تقدّمك.",ex:["Overall, the evidence suggests that …"],vt:"مراجعة",w:"راجع كل مفردات B2",k:["راجع Anki","أعد كتابة مقال اليوم ٥٥ بموضوع جديد","استمع لحلقتين 6 Minute English بدون نص","محادثة ٢٠ دقيقة"],r:["six","wi","tandem"]},
+{lv:"B2",t:"الرسمي وغير الرسمي",g:"Formal vs informal register",x:"الرسمي: جمل أطول، أفعال أدق (receive بدل get)، بدون اختصارات. غير الرسمي: اختصارات وphrasal verbs.",ex:["Can you send it? → Could you kindly send it?","get → receive, need → require, ask → inquire"],vt:"اللغة الرسمية",w:"request, assist, inquire, regarding, provide, appreciate, convenient, further, apologise for, at your earliest convenience",k:["حوّل إيميل غير رسمي إلى رسمي","اكتب رسالة رسمية تطلب فيها تدريب صيفي","اكتب نفس الخبر مرتين: لصديق ولمدير","صحّح في Write & Improve"],r:["wi","bc"]},
+{lv:"B2",t:"النقاش والعرض",g:"Discussion & presentation language",x:"الطلاقة في B2 تعني تعبّر عن رأيك، توافق وتعارض بأدب، وتوضح فكرتك بطريقة ثانية.",ex:["I see your point, but …","That's a good question.","Let me put it another way."],vt:"عبارات النقاش",w:"agree, disagree, point, persuade, clarify, interrupt, summarise, in my opinion, to be honest, as far as I know",k:["حضّر عرض ٣ دقائق عن مشروع تحبه وسجّله","نقاش ٢٠ دقيقة مع شريك لغة","Shadowing ٥ دقائق على TED talk","اكتب ١٠ عبارات نقاش واستخدمها في المحادثة"],r:["tandem","ted","yg"]},
+{lv:"B2",rv:1,t:"اختبار تجريبي شامل",g:"Full mock test",x:"عامله كاختبار حقيقي: وقت محدد، بدون قاموس.",ex:["Timed. No dictionary. No pauses."],vt:"—",w:"—",k:["حل B2 First تجريبي: Reading & Use of English","حل Listening","اكتب مقال ٢٥٠ كلمة في ٤٠ دقيقة","سجّل ٤ دقائق كلام وقيّم الطلاقة والدقة"],r:["ce","wi"]},
+{lv:"B2",rv:1,t:"التقييم النهائي والخطة القادمة",g:"Final assessment",x:"اعرف مستواك الحقيقي، وخطّط للمرحلة الجاية.",ex:["Day 1 vs Day 60 — listen to both."],vt:"—",w:"—",k:["حل اختبار EF SET الكامل واحفظ نتيجتك","قارن تسجيل اليوم ١ بتسجيل اليوم","حدّد أضعف مهارتين عندك","اكتب خطتك بعد الشهرين: قراءة يومية + محادثة أسبوعية + مقال أسبوعي"],r:["efset","tandem"]}
+];
+D.forEach((d,i)=>d.n=i+1);
+
+const ROUTINE = {
+  A1:["Anki: مراجعة البطاقات (١٠ د)","Shadowing: كرّر بعد صوت إنجليزي (١٠ د)","استماع حر من ELLLO أو VOA (١٠ د)"],
+  A2:["Anki: مراجعة البطاقات (١٥ د)","Shadowing (١٠ د)","استماع حر من VOA أو News in Levels (١٥ د)"],
+  B1:["Anki (١٥ د)","Shadowing (١٠ د)","6 Minute English أو VOA (١٥ د)","قراءة خبر واحد بصوت عالٍ (١٠ د)"],
+  B2:["Anki (١٥ د)","Shadowing على TED (١٠ د)","بودكاست بدون نص (٢٠ د)","قراءة مقال واستخراج ٥ كلمات (١٥ د)"]
+};
+
+// ---------- state ----------
+const KEY="eng60-progress-v1";
+let S={done:{},tasks:{}};
+try{const raw=localStorage.getItem(KEY); if(raw){const p=JSON.parse(raw); if(p&&p.done&&p.tasks)S=p;}}catch(e){}
+function save(){try{localStorage.setItem(KEY,JSON.stringify(S))}catch(e){}}
+
+const $=s=>document.querySelector(s);
+const esc=s=>String(s).replace(/[&<>"]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
+
+function renderTrack(){
+  const ranges={A1:[1,14],A2:[15,30],B1:[31,45],B2:[46,60]};
+  $("#track").innerHTML=Object.keys(ranges).map(l=>{
+    const [a,b]=ranges[l]; let c=0; for(let i=a;i<=b;i++) if(S.done[i]) c++;
+    return `<span title="${l}"><i style="background:${LV[l].c};width:${c/(b-a+1)*100}%"></i></span>`;
+  }).join("");
+  const total=Object.values(S.done).filter(Boolean).length;
+  $("#doneCount").textContent=AR(total);
+  const next=D.find(d=>!S.done[d.n]);
+  const cb=$("#continueBtn");
+  if(!next){cb.textContent="أكملت المسار 🎉";cb.onclick=()=>openDay(60);}
+  else{cb.textContent=total?`كمّل اليوم ${AR(next.n)}`:"ابدأ اليوم ١";cb.onclick=()=>openDay(next.n);}
+}
+
+function renderPlan(){
+  $("#tab-plan").innerHTML=Object.keys(LV).map(l=>{
+    const days=D.filter(d=>d.lv===l);
+    return `<div class="level" style="--c:${LV[l].c}">
+      <div class="level-head"><span class="tag" style="background:${LV[l].c}">${l}</span><h2>${LV[l].name}</h2><p>${LV[l].desc}</p></div>
+      <div class="stations">${days.map(d=>`<button class="st${S.done[d.n]?" done":""}${d.rv?" review":""}" data-day="${d.n}" aria-label="اليوم ${d.n}: ${esc(d.t)}"><span class="n">${AR(d.n)}</span><span class="t">${esc(d.t)}<small class="en">${esc(d.g)}</small></span></button>`).join("")}</div>
+    </div>`;
+  }).join("");
+  document.querySelectorAll(".st").forEach(b=>b.onclick=()=>openDay(+b.dataset.day));
+}
+
+function renderHow(){
+  $("#tab-how").innerHTML=`
+  <div class="note"><b>كلمة صريحة قبل البداية:</b> الانتقال من الصفر إلى B2 يحتاج عادةً مئات الساعات من الدراسة. هذه الخطة مكثفة (ساعتين إلى ثلاث يومياً)، وتناسب أكثر من عنده أساس بسيط. لو وصلت B1 قوي في الشهرين فهذا إنجاز ممتاز، وكمّل نفس النظام حتى تثبت B2.</div>
+  <div class="panel"><h3>شكل اليوم الواحد (٢–٣ ساعات)</h3>
+    <ol><li>الدرس: اقرأ الشرح والأمثلة، ثم ادرس نفس النقطة من المصدر المرفق (٢٥–٣٠ د).</li>
+    <li>المفردات: أضف كلمات اليوم إلى Anki مع جملة لكل كلمة (٢٠ د).</li>
+    <li>المهام: نفّذ مهام اليوم وعلّمها (٤٥–٦٠ د).</li>
+    <li>الروتين الثابت: مراجعة Anki، Shadowing، واستماع حر (٣٠–٤٥ د).</li></ol></div>
+  <div class="panel"><h3>أيام المراجعة</h3><p>كل يوم سابع يوم مراجعة بإطار متقطع. لا تتخطاه — هنا يتحول اللي تعلمته إلى شيء تقدر تستخدمه. في أيام ١٤ و٢٨ و٤٢ و٥٩–٦٠ اختبارات تقيس فيها نفسك.</p></div>
+  <div class="panel"><h3>ما هو الـShadowing؟</h3><p>تشغّل مقطع قصير، وتكرر بعد المتحدث فوراً بنفس السرعة والنغمة، كأنك ظله. من أسرع الطرق لتحسين النطق والطلاقة.</p></div>
+  <div class="panel"><h3>قيس تقدّمك</h3><p>سجّل صوتك اليوم الأول، واحتفظ بالتسجيل. في اليوم ٦٠ قارن. وابدأ إن أمكن باختبار EF SET القصير لتعرف نقطة البداية.</p></div>`;
+}
+
+function renderRes(){
+  $("#tab-res").innerHTML=`<div class="res-list">${Object.values(RES).map(r=>`<a class="res" href="${r.u}" target="_blank" rel="noopener"><b class="en" style="text-align:right">${esc(r.n)}</b><span>${esc(r.d)}</span></a>`).join("")}
+  <div class="res"><b>كتب مقترحة (اختيارية)</b><span>Essential Grammar in Use (الأحمر) لمستوى A1–A2، وEnglish Grammar in Use (الأزرق) لمستوى B1–B2 — كلاهما من Raymond Murphy.</span></div></div>`;
+}
+
+// ---------- day sheet ----------
+let current=null;
+function openDay(n){
+  current=n; const d=D[n-1]; const c=LV[d.lv].c;
+  const sh=$("#sheet"); sh.style.setProperty("--c",c);
+  const words=d.w.split(",").map(s=>s.trim()).filter(Boolean);
+  const isList=!(d.w.startsWith("راجع")||d.w==="—");
+  sh.innerHTML=`
+    <div class="sheet-top"><button class="iconbtn" id="closeBtn">إغلاق</button><span class="meta">${d.lv} · ${LV[d.lv].name}</span></div>
+    <div class="meta">اليوم ${AR(n)} من ٦٠${d.rv?" — يوم مراجعة":""}</div>
+    <h2 id="sheetTitle">${esc(d.t)}</h2>
+    <div class="en meta" style="text-align:right">${esc(d.g)}</div>
+    <div class="sec"><h3>الدرس</h3><p>${esc(d.x)}</p>${d.ex.map(e=>`<div class="ex en">${esc(e)}</div>`).join("")}</div>
+    <div class="sec"><h3>مفردات اليوم: ${esc(d.vt)}</h3>
+      ${isList?`<div class="chips">${words.map(w=>`<a class="chip en" target="_blank" rel="noopener" href="https://dictionary.cambridge.org/dictionary/english/${encodeURIComponent(w.split(" – ")[0].split("(")[0].trim().replace(/ /g,"-"))}">${esc(w)}</a>`).join("")}</div><p class="meta">اضغط الكلمة لتسمع نطقها في Cambridge Dictionary.</p>`:`<p>${esc(d.w)}</p>`}
+    </div>
+    <div class="sec"><h3>مهام اليوم</h3>${d.k.map((t,i)=>{const id=n+"-"+i;const on=!!S.tasks[id];return `<div class="task${on?" checked":""}"><input type="checkbox" id="t${id}" data-id="${id}" ${on?"checked":""}><label for="t${id}">${esc(t)}</label></div>`}).join("")}</div>
+    <div class="sec"><h3>الروتين الثابت</h3><ul class="routine">${ROUTINE[d.lv].map(r=>`<li>${esc(r)}</li>`).join("")}</ul></div>
+    <div class="sec"><h3>مصادر اليوم</h3><div class="chips">${d.r.map(k=>`<a class="chip" target="_blank" rel="noopener" href="${RES[k].u}">${esc(RES[k].n)}</a>`).join("")}</div></div>
+    <div class="sheet-foot">
+      <button class="btn" id="doneBtn">${S.done[n]?"إلغاء الإكمال":"علّم اليوم كمكتمل"}</button>
+      ${n>1?`<button class="iconbtn" id="prevBtn">اليوم السابق</button>`:""}
+      ${n<60?`<button class="iconbtn" id="nextBtn">اليوم التالي</button>`:""}
+    </div>`;
+  sh.querySelectorAll(".task input").forEach(cb=>cb.onchange=()=>{
+    S.tasks[cb.dataset.id]=cb.checked; cb.parentElement.classList.toggle("checked",cb.checked);
+    const all=d.k.every((_,i)=>S.tasks[n+"-"+i]);
+    if(all&&!S.done[n]){S.done[n]=true;$("#doneBtn").textContent="إلغاء الإكمال";refresh();}
+    save();
+  });
+  $("#doneBtn").onclick=()=>{S.done[n]=!S.done[n];save();refresh();$("#doneBtn").textContent=S.done[n]?"إلغاء الإكمال":"علّم اليوم كمكتمل";};
+  $("#closeBtn").onclick=closeDay;
+  if($("#prevBtn"))$("#prevBtn").onclick=()=>openDay(n-1);
+  if($("#nextBtn"))$("#nextBtn").onclick=()=>openDay(n+1);
+  sh.scrollTop=0;
+  sh.classList.add("open"); $("#overlay").classList.add("open");
+  $("#closeBtn").focus();
+}
+function closeDay(){$("#sheet").classList.remove("open");$("#overlay").classList.remove("open");const b=document.querySelector(`.st[data-day="${current}"]`);if(b)b.focus();}
+$("#overlay").onclick=closeDay;
+document.addEventListener("keydown",e=>{if(e.key==="Escape"&&$("#sheet").classList.contains("open"))closeDay();});
+
+function refresh(){renderTrack();renderPlan();}
+
+document.querySelectorAll("nav.tabs button").forEach(b=>b.onclick=()=>{
+  document.querySelectorAll("nav.tabs button").forEach(x=>x.setAttribute("aria-selected",x===b));
+  ["plan","how","res"].forEach(t=>$("#tab-"+t).hidden=(t!==b.dataset.tab));
+});
+
+renderHow();renderRes();refresh();
+</script>
+</body>
+</html>
